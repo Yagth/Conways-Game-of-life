@@ -1,5 +1,5 @@
 public class Main {
     public static void main(String[] args) {
-        new MainFrame(50).start();
+        new MainFrame(100).start();
     }
 }
