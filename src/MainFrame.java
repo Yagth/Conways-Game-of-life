@@ -6,7 +6,8 @@ import java.awt.event.ActionListener;
 public class MainFrame extends JFrame{
     MainPanel mainPanel;
     JPanel menuPanel;
-    JButton start,playPause,stop;
+    JButton startStop;
+    JButton playPause;
     int noCells;
     MainFrame(int size){
         this.noCells = size;
@@ -15,28 +16,23 @@ public class MainFrame extends JFrame{
         menuPanel.setLayout(new FlowLayout());
         menuPanel.setBackground(Color.darkGray);
 
-        start = new JButton("Start");
-        start.setForeground(Color.white);
-        start.setFocusable(false);
+        startStop = new JButton("Start");
+        startStop.setForeground(Color.white);
+        startStop.setFocusable(false);
         playPause = new JButton("Pause");
         playPause.setForeground(Color.white);
         playPause.setFocusable(false);
-        stop = new JButton("Stop");
-        stop.setForeground(Color.white);
-        stop.setFocusable(false);
 
-        start.setBackground(Color.black);
-        stop.setBackground(Color.black);
+
+        startStop.setBackground(Color.black);
         playPause.setBackground(Color.black);
 
 
-        start.addActionListener(new StartActionListener());
-        stop.addActionListener(new StopActionListener());
+        startStop.addActionListener(new StartStopActionListener());
         playPause.addActionListener(new PlayPauseActionListener());
 
-        menuPanel.add(start);
+        menuPanel.add(startStop);
         menuPanel.add(playPause);
-        menuPanel.add(stop);
 
 
         add(mainPanel,BorderLayout.CENTER);
@@ -51,20 +47,20 @@ public class MainFrame extends JFrame{
         mainPanel.start();
     }
 
-    private class StartActionListener implements ActionListener{
+    private class StartStopActionListener implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            mainPanel.start();
-        }
-    }
-
-    private class StopActionListener implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent actionEvent) {
-            mainPanel.stop();
-            mainPanel.clear();
+            JButton jb = (JButton) actionEvent.getSource();
+            if(jb.getText().equals("Start")){
+                mainPanel.start();
+                jb.setText("Stop");
+            }
+            else if(jb.getText().equals("Stop")){
+                mainPanel.stop();
+                mainPanel.clear();
+                jb.setText("Start");
+            }
         }
     }
 
