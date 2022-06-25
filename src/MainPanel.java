@@ -104,29 +104,34 @@ public class MainPanel extends JPanel {
             color = getRandomColor();
         return color;
     }
+
+    public void nextCellState(){
+        boolean[][] tmp  = new boolean[size][size];
+        for(int i = 0; i<size; i++){
+            for(int j = 0; j<size; j++){
+                int count = countAliveNeighbors(i,j);
+                if(cellMap[i][j]){
+                    if(count<2)
+                        tmp[i][j] = false;
+                    if(count == 3 || count == 2)
+                        tmp[i][j] = true;
+                    if(count>3)
+                        tmp[i][j] = false;
+                }
+                else{
+                    if(count == 3)
+                        tmp[i][j] = true;
+                }
+            }
+        }
+        cellMap = tmp;
+        renderNextCells();
+    }
+
     private class timerListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            boolean[][] tmp  = new boolean[size][size];
-            for(int i = 0; i<size; i++){
-                for(int j = 0; j<size; j++){
-                    int count = countAliveNeighbors(i,j);
-                    if(cellMap[i][j]){
-                        if(count<2)
-                            tmp[i][j] = false;
-                        if(count == 3 || count == 2)
-                            tmp[i][j] = true;
-                        if(count>3)
-                            tmp[i][j] = false;
-                    }
-                    else{
-                        if(count == 3)
-                            tmp[i][j] = true;
-                    }
-                }
-            }
-            cellMap = tmp;
-            renderNextCells();
+            nextCellState();
         }
     }
 }

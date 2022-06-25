@@ -8,6 +8,11 @@ public class MainFrame extends JFrame{
     JPanel menuPanel;
     JButton startStop;
     JButton playPause;
+    JButton stepForward;
+    ImageIcon playImage = new ImageIcon("IconImages/playIcon.png");
+    ImageIcon pauseImage = new ImageIcon("IconImages/pauseIcon.png");
+    ImageIcon stopImage = new ImageIcon("IconImages/stopIcon.png");
+
     int noCells;
     MainFrame(int size){
         this.noCells = size;
@@ -17,22 +22,33 @@ public class MainFrame extends JFrame{
         menuPanel.setBackground(Color.darkGray);
 
         startStop = new JButton("Start");
-        startStop.setForeground(Color.white);
+        startStop.setForeground(Color.BLACK);
         startStop.setFocusable(false);
-        playPause = new JButton("Pause");
-        playPause.setForeground(Color.white);
+        startStop.setPreferredSize(new Dimension(70,20));
+        playPause = new JButton(pauseImage);
         playPause.setFocusable(false);
+        playPause.setPreferredSize(new Dimension(20,20));
+
+        stepForward = new JButton("StepForward");
+        stepForward.setFocusable(false);
+        stepForward.setForeground(Color.black);
+        stepForward.setPreferredSize(new Dimension(130,20));
 
 
-        startStop.setBackground(Color.black);
-        playPause.setBackground(Color.black);
+
+        startStop.setBackground(Color.white);
+        playPause.setBackground(Color.white);
+        stepForward.setBackground(Color.white);
+
 
 
         startStop.addActionListener(new StartStopActionListener());
         playPause.addActionListener(new PlayPauseActionListener());
+        stepForward.addActionListener(new StepForwardActionListener());
 
         menuPanel.add(startStop);
         menuPanel.add(playPause);
+        menuPanel.add(stepForward);
 
 
         add(mainPanel,BorderLayout.CENTER);
@@ -54,12 +70,15 @@ public class MainFrame extends JFrame{
             JButton jb = (JButton) actionEvent.getSource();
             if(jb.getText().equals("Start")){
                 mainPanel.start();
-                jb.setText("Stop");
+                jb.setIcon(stopImage);
+                jb.setText("");
             }
-            else if(jb.getText().equals("Stop")){
+            else if(jb.getIcon().equals(stopImage)){
                 mainPanel.stop();
                 mainPanel.clear();
+                jb.setIcon(null);
                 jb.setText("Start");
+                playPause.setIcon(pauseImage);
             }
         }
     }
@@ -68,14 +87,28 @@ public class MainFrame extends JFrame{
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             JButton jb = (JButton) actionEvent.getSource();
-            if(jb.getText().equals("Pause")){
+            try {
+                if (jb.getIcon().equals(pauseImage)) {
+                    mainPanel.stop();
+                    jb.setIcon(playImage);
+                } else if (jb.getIcon().equals(playImage)) {
+                    mainPanel.resume();
+                    jb.setIcon(pauseImage);
+                }
+            }catch (Exception ex){}
+        }
+    }
+
+    private class StepForwardActionListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            JButton jb = playPause;
+            try {
+                if (jb.getIcon().equals(pauseImage))
+                    jb.setIcon(playImage);
                 mainPanel.stop();
-                jb.setText("Play");
-            }
-            else if(jb.getText().equals("Play")) {
-                mainPanel.resume();
-                jb.setText("Pause");
-            }
+                mainPanel.nextCellState();
+            }catch(Exception e){}
         }
     }
 

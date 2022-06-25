@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f4aa7f2d-276c-4263-91f6-97c3143124b2" name="Changes" comment="Added play button to the frame">
+    <list default="true" id="f4aa7f2d-276c-4263-91f6-97c3143124b2" name="Changes" comment="Merged the start and stop buttons">
+      <change afterPath="$PROJECT_DIR$/IconImages/pauseIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IconImages/playIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IconImages/startIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IconImages/stopIcon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,12 +34,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/home/yab/Documents/Programming/ProgrammingPractices/GameOfLife"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -85,7 +97,21 @@
       <option name="project" value="LOCAL" />
       <updated>1656138218011</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Merged the play and pause buttons">
+      <created>1656138500266</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1656138500266</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Merged the start and stop buttons">
+      <created>1656138733910</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1656138733910</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -102,6 +128,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Randomly generated life version" />
     <MESSAGE value="Added play button to the frame" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added play button to the frame" />
+    <MESSAGE value="Merged the play and pause buttons" />
+    <MESSAGE value="Merged the start and stop buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merged the start and stop buttons" />
   </component>
 </project>
