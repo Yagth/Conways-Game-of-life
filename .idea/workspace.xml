@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f4aa7f2d-276c-4263-91f6-97c3143124b2" name="Changes" comment="Merged the start and stop buttons">
-      <change afterPath="$PROJECT_DIR$/IconImages/pauseIcon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IconImages/playIcon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IconImages/startIcon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IconImages/stopIcon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPanel.java" afterDir="false" />
-    </list>
+    <list default="true" id="f4aa7f2d-276c-4263-91f6-97c3143124b2" name="Changes" comment="Added Icon for the startStop and playPause" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656138733910</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added Icon for the startStop and playPause">
+      <created>1656141985904</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1656141985904</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -130,6 +129,7 @@
     <MESSAGE value="Added play button to the frame" />
     <MESSAGE value="Merged the play and pause buttons" />
     <MESSAGE value="Merged the start and stop buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merged the start and stop buttons" />
+    <MESSAGE value="Added Icon for the startStop and playPause" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Icon for the startStop and playPause" />
   </component>
 </project>
