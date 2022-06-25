@@ -12,6 +12,7 @@ public class MainFrame extends JFrame{
     ImageIcon playImage = new ImageIcon("IconImages/playIcon.png");
     ImageIcon pauseImage = new ImageIcon("IconImages/pauseIcon.png");
     ImageIcon stopImage = new ImageIcon("IconImages/stopIcon.png");
+    ImageIcon nextImage = new ImageIcon("IconImages/nextIcon.png");
 
     int noCells;
     MainFrame(int size){
@@ -29,18 +30,13 @@ public class MainFrame extends JFrame{
         playPause.setFocusable(false);
         playPause.setPreferredSize(new Dimension(20,20));
 
-        stepForward = new JButton("StepForward");
+        stepForward = new JButton(nextImage);
         stepForward.setFocusable(false);
-        stepForward.setForeground(Color.black);
-        stepForward.setPreferredSize(new Dimension(130,20));
-
-
+        stepForward.setPreferredSize(new Dimension(20,20));
 
         startStop.setBackground(Color.white);
         playPause.setBackground(Color.white);
         stepForward.setBackground(Color.white);
-
-
 
         startStop.addActionListener(new StartStopActionListener());
         playPause.addActionListener(new PlayPauseActionListener());
@@ -50,14 +46,12 @@ public class MainFrame extends JFrame{
         menuPanel.add(playPause);
         menuPanel.add(stepForward);
 
-
         add(mainPanel,BorderLayout.CENTER);
         add(menuPanel,BorderLayout.SOUTH);
         setSize(size*10, size*10);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
-
 
     public void start(){
         mainPanel.start();
