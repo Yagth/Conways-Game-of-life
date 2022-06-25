@@ -65,6 +65,10 @@ public class MainPanel extends JPanel {
         renderNextCells();
     }
 
+    public void resume(){
+        timer.start();
+    }
+
     int countAliveNeighbors(int x, int y){
         int count  = 0;
 
