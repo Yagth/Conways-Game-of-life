@@ -16,7 +16,7 @@ public class MainFrame extends JFrame{
     JButton stepForward;
     JMenuBar menuBar;
     JMenu menu,newCells;
-    JMenuItem save, load, random, custom;
+    JMenuItem save, load, random, custom, changeSize;
     ObjectInputStream inputStream;
     ObjectOutputStream outputStream;
     ImageIcon playImage = new ImageIcon("IconImages/playIcon.png");
@@ -27,6 +27,8 @@ public class MainFrame extends JFrame{
     int noCells;
     boolean isCustom = false;
     MainFrame(int size){
+        setSize(800, 800);
+
         this.noCells = size;
         mainPanel = new MainPanel(size);
         menuPanel = new JPanel();
@@ -69,25 +71,30 @@ public class MainFrame extends JFrame{
         load = new JMenuItem("Load");
         random = new JMenuItem("Random");
         custom = new JMenuItem("Custom");
+        changeSize = new JMenuItem("Change size");
 
         save.addActionListener(new SaveActionListener());
         load.addActionListener(new LoadActionListener());
         random.addActionListener(new RandomActionListener());
         custom.addActionListener(new CustomActionListener());
+        changeSize.addActionListener(new ChangeSizeListener());
 
         menu.add(save);
         menu.add(load);
         newCells.add(random);
         newCells.add(custom);
+        newCells.add(changeSize);
 
         menuBar.add(menu);
         menuBar.add(newCells);
 
+        setBackground(Color.black);
+        setTitle("Game of Life");
         this.setJMenuBar(menuBar);
         add(mainPanel,BorderLayout.CENTER);
         add(menuPanel,BorderLayout.SOUTH);
-        setSize(size*10, size*10);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
@@ -190,6 +197,14 @@ public class MainFrame extends JFrame{
                 mainPanel.clear();
             }catch(Exception ex){}
             mainPanel.addCustomButtons();
+        }
+    }
+
+    private class ChangeSizeListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            new Main();
+            MainFrame.this.dispose();
         }
     }
 
