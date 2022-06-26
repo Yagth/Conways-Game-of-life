@@ -175,6 +175,9 @@ public class MainFrame extends JFrame{
         public void actionPerformed(ActionEvent actionEvent) {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.showOpenDialog(mainPanel);
+
+            if(playPause.getIcon().equals(pauseImage))
+                playPause.setIcon(playImage);
             try {
                 FileInputStream fileInputStream = new FileInputStream(fileChooser.getSelectedFile());
                 inputStream = new ObjectInputStream(fileInputStream);
@@ -199,8 +202,10 @@ public class MainFrame extends JFrame{
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             isCustom = true;
-            mainPanel.stop();
-            mainPanel.clear();
+            try {
+                mainPanel.stop();
+                mainPanel.clear();
+            }catch (Exception ex){}
             startStop.setText("Start");
             startStop.setIcon(null);
             mainPanel.addCustomButtons();
