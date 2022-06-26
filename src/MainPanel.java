@@ -49,6 +49,7 @@ public class MainPanel extends JPanel {
     }
 
     private void generateCustomCells(){
+        setCellBorder(Color.white);
         for(int i = 0; i<size; i++){
             for(int j = 0; j<size; j++){
                 cellMap[i][j] = !cells[i][j].getBackground().equals(Color.black);
@@ -62,6 +63,8 @@ public class MainPanel extends JPanel {
             for(int j = 0; j<size;j++){
                 JButton tmp = new JButton();
                 tmp.setFocusable(false);
+                tmp.setBorder(BorderFactory.createLineBorder(Color.black));
+
                 if(cellMap[i][j])
                     tmp.setBackground(getRandomColor());
                 else
@@ -73,6 +76,7 @@ public class MainPanel extends JPanel {
     }
 
      void addCustomButtons(){
+        setCellBorder(Color.white);
         for(int i = 0; i<size; i++){
             for(int j = 0; j<size;j++){
                 cells[i][j].addActionListener(new CellActionListener());
@@ -80,7 +84,15 @@ public class MainPanel extends JPanel {
         }
     }
 
+    public void setCellBorder(Color color){
+        for(JButton[] jb: cells){
+            for(JButton jb2: jb){
+                jb2.setBorder(BorderFactory.createLineBorder(color));
+            }
+        }
+    }
     public void randomStart(){
+        setCellBorder(Color.black);
         generateRandomCells();
         timer = new Timer(100,new timerListener());
         timer.start();
@@ -88,11 +100,13 @@ public class MainPanel extends JPanel {
 
     public void customStart(){
         generateCustomCells();
+        setCellBorder(Color.black);
         timer = new Timer(100,new timerListener());
         timer.start();
     }
 
     public void stop(){
+        setCellBorder(Color.white);
         timer.stop();
     }
 

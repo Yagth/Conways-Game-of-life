@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f4aa7f2d-276c-4263-91f6-97c3143124b2" name="Changes" comment="Added a custom create Option along with a menu bar with an option to save the start pattern of the life">
+    <list default="true" id="f4aa7f2d-276c-4263-91f6-97c3143124b2" name="Changes" comment="Added an option frame to take the size from the user">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656234639478</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added an option frame to take the size from the user">
+      <created>1656237582392</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1656237582392</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -179,6 +186,7 @@
     <MESSAGE value="Added Icon For all buttons" />
     <MESSAGE value="Changed everything back to where it was" />
     <MESSAGE value="Added a custom create Option along with a menu bar with an option to save the start pattern of the life" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a custom create Option along with a menu bar with an option to save the start pattern of the life" />
+    <MESSAGE value="Added an option frame to take the size from the user" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added an option frame to take the size from the user" />
   </component>
 </project>

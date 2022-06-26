@@ -185,6 +185,8 @@ public class MainFrame extends JFrame{
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             isCustom = false;
+            startStop.setText("Start");
+            startStop.setIcon(null);
             mainPanel.generateRandomCells();
         }
     }
@@ -193,9 +195,10 @@ public class MainFrame extends JFrame{
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             isCustom = true;
-            try{
-                mainPanel.clear();
-            }catch(Exception ex){}
+            mainPanel.stop();
+            mainPanel.clear();
+            startStop.setText("Start");
+            startStop.setIcon(null);
             mainPanel.addCustomButtons();
         }
     }
