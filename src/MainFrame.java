@@ -176,8 +176,6 @@ public class MainFrame extends JFrame{
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.showOpenDialog(mainPanel);
 
-            if(playPause.getIcon().equals(pauseImage))
-                playPause.setIcon(playImage);
             try {
                 FileInputStream fileInputStream = new FileInputStream(fileChooser.getSelectedFile());
                 inputStream = new ObjectInputStream(fileInputStream);
