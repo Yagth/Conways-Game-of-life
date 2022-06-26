@@ -38,12 +38,20 @@ public class MainPanel extends JPanel {
 
     }
 
-    private void removeActionListener(){
+    void removeActionListener(){
         for(JButton[] jb : cells){
             for(JButton jb2 : jb){
                 for(ActionListener al: jb2.getActionListeners()){
                     jb2.removeActionListener(al);
                 }
+            }
+        }
+    }
+
+    void addActionListeners(){
+        for(int i = 0; i<size; i++){
+            for(int j = 0; j<size; j++){
+                cells[i][j].addActionListener(new CellActionListener());
             }
         }
     }
@@ -120,6 +128,7 @@ public class MainPanel extends JPanel {
     }
 
     public void resume(){
+        setCellBorder(Color.black);
         timer.start();
     }
 

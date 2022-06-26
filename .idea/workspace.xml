@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f4aa7f2d-276c-4263-91f6-97c3143124b2" name="Changes" comment="Added an option frame to take the size from the user">
+    <list default="true" id="f4aa7f2d-276c-4263-91f6-97c3143124b2" name="Changes" comment="Added some files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPanel.java" afterDir="false" />
@@ -163,7 +163,21 @@
       <option name="project" value="LOCAL" />
       <updated>1656237582392</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Worked on some looks of the app while playing the cell sequences and generating the custom sequence.">
+      <created>1656239714104</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1656239714104</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added some files">
+      <created>1656239752144</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1656239752144</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -187,6 +201,8 @@
     <MESSAGE value="Changed everything back to where it was" />
     <MESSAGE value="Added a custom create Option along with a menu bar with an option to save the start pattern of the life" />
     <MESSAGE value="Added an option frame to take the size from the user" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added an option frame to take the size from the user" />
+    <MESSAGE value="Worked on some looks of the app while playing the cell sequences and generating the custom sequence." />
+    <MESSAGE value="Added some files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some files" />
   </component>
 </project>

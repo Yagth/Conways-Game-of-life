@@ -105,6 +105,7 @@ public class MainFrame extends JFrame{
             JButton jb = (JButton) actionEvent.getSource();
             if(jb.getText().equals("Start")){
                 if(isCustom){
+                    mainPanel.removeActionListener();
                     mainPanel.customStart();
                 }
                 else{
@@ -116,6 +117,8 @@ public class MainFrame extends JFrame{
             else if(jb.getIcon().equals(stopImage)){
                 mainPanel.stop();
                 mainPanel.clear();
+                if(isCustom)
+                    mainPanel.addActionListeners();
                 jb.setIcon(null);
                 jb.setText("Start");
                 playPause.setIcon(pauseImage);
@@ -146,6 +149,7 @@ public class MainFrame extends JFrame{
                 if (jb.getIcon().equals(pauseImage))
                     jb.setIcon(playImage);
                 mainPanel.stop();
+                mainPanel.setCellBorder(Color.black);
                 mainPanel.nextCellState();
             }catch(Exception e){}
         }
