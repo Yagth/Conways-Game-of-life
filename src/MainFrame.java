@@ -2,6 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 
 public class MainFrame extends JFrame{
     MainPanel mainPanel;
@@ -9,12 +14,18 @@ public class MainFrame extends JFrame{
     JButton startStop;
     JButton playPause;
     JButton stepForward;
+    JMenuBar menuBar;
+    JMenu menu,newCells;
+    JMenuItem save, load, random, custom;
+    ObjectInputStream inputStream;
+    ObjectOutputStream outputStream;
     ImageIcon playImage = new ImageIcon("IconImages/playIcon.png");
     ImageIcon pauseImage = new ImageIcon("IconImages/pauseIcon.png");
     ImageIcon stopImage = new ImageIcon("IconImages/stopIcon.png");
     ImageIcon nextImage = new ImageIcon("IconImages/nextIcon.png");
 
     int noCells;
+    boolean isCustom = false;
     MainFrame(int size){
         this.noCells = size;
         mainPanel = new MainPanel(size);
@@ -46,15 +57,38 @@ public class MainFrame extends JFrame{
         menuPanel.add(playPause);
         menuPanel.add(stepForward);
 
+        menuBar = new JMenuBar();
+        menuBar.setBackground(Color.DARK_GRAY);
+
+        menu = new JMenu("File");
+        menu.setForeground(Color.white);
+        newCells = new JMenu("New Cells");
+        newCells.setForeground(Color.white);
+
+        save = new JMenuItem("Save");
+        load = new JMenuItem("Load");
+        random = new JMenuItem("Random");
+        custom = new JMenuItem("Custom");
+
+        save.addActionListener(new SaveActionListener());
+        load.addActionListener(new LoadActionListener());
+        random.addActionListener(new RandomActionListener());
+        custom.addActionListener(new CustomActionListener());
+
+        menu.add(save);
+        menu.add(load);
+        newCells.add(random);
+        newCells.add(custom);
+
+        menuBar.add(menu);
+        menuBar.add(newCells);
+
+        this.setJMenuBar(menuBar);
         add(mainPanel,BorderLayout.CENTER);
         add(menuPanel,BorderLayout.SOUTH);
         setSize(size*10, size*10);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
-    }
-
-    public void start(){
-        mainPanel.start();
     }
 
     private class StartStopActionListener implements ActionListener{
@@ -63,7 +97,12 @@ public class MainFrame extends JFrame{
         public void actionPerformed(ActionEvent actionEvent) {
             JButton jb = (JButton) actionEvent.getSource();
             if(jb.getText().equals("Start")){
-                mainPanel.start();
+                if(isCustom){
+                    mainPanel.customStart();
+                }
+                else{
+                    mainPanel.randomStart();
+                }
                 jb.setIcon(stopImage);
                 jb.setText("");
             }
@@ -92,7 +131,6 @@ public class MainFrame extends JFrame{
             }catch (Exception ex){}
         }
     }
-
     private class StepForwardActionListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
@@ -103,6 +141,55 @@ public class MainFrame extends JFrame{
                 mainPanel.stop();
                 mainPanel.nextCellState();
             }catch(Exception e){}
+        }
+    }
+
+    private class SaveActionListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.showSaveDialog(mainPanel);
+            try {
+                FileOutputStream outputFileStream = new FileOutputStream(fileChooser.getSelectedFile());
+                outputStream = new ObjectOutputStream(outputFileStream);
+                outputStream.writeObject(mainPanel.copyCellMap);
+            }catch(Exception ex){
+                JOptionPane.showMessageDialog(mainPanel,"Couldn't save the file",null,JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private class LoadActionListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.showOpenDialog(mainPanel);
+            try {
+                FileInputStream fileInputStream = new FileInputStream(fileChooser.getSelectedFile());
+                inputStream = new ObjectInputStream(fileInputStream);
+                mainPanel.cellMap = (boolean[][]) inputStream.readObject();
+            }catch(Exception ex){
+                JOptionPane.showMessageDialog(mainPanel,"Couldn't Open the file",null,JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private class RandomActionListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            isCustom = false;
+            mainPanel.generateRandomCells();
+        }
+    }
+
+    private class CustomActionListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            isCustom = true;
+            try{
+                mainPanel.clear();
+            }catch(Exception ex){}
+            mainPanel.addCustomButtons();
         }
     }
 

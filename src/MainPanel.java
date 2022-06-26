@@ -7,12 +7,14 @@ import java.util.Random;
 public class MainPanel extends JPanel {
     int size;
     boolean[][] cellMap;
+    boolean[][] copyCellMap;
     JButton[][] cells;
     Timer timer;
 
     MainPanel(int size){
         this.size = size;
         cellMap = new boolean[size][size];
+        copyCellMap = new boolean[size][size];
         cells = new JButton[size][size];
 
         setBackground(Color.black);
@@ -25,10 +27,34 @@ public class MainPanel extends JPanel {
         Random rnd = new Random();
         for(int i = 0; i<size; i++){
             for(int j = 0; j<size; j++){
+                try{
+                    removeActionListener();
+                }catch(Exception ex) {
+                }
                 cellMap[i][j] = rnd.nextInt(100)<30;
+                copyCellMap[i][j] = cellMap[i][j];
             }
         }
 
+    }
+
+    private void removeActionListener(){
+        for(JButton[] jb : cells){
+            for(JButton jb2 : jb){
+                for(ActionListener al: jb2.getActionListeners()){
+                    jb2.removeActionListener(al);
+                }
+            }
+        }
+    }
+
+    private void generateCustomCells(){
+        for(int i = 0; i<size; i++){
+            for(int j = 0; j<size; j++){
+                cellMap[i][j] = !cells[i][j].getBackground().equals(Color.black);
+                copyCellMap[i][j] = cellMap[i][j];
+            }
+        }
     }
 
     private void addButtons(){
@@ -46,8 +72,22 @@ public class MainPanel extends JPanel {
         }
     }
 
-    public void start(){
+     void addCustomButtons(){
+        for(int i = 0; i<size; i++){
+            for(int j = 0; j<size;j++){
+                cells[i][j].addActionListener(new CellActionListener());
+            }
+        }
+    }
+
+    public void randomStart(){
         generateRandomCells();
+        timer = new Timer(100,new timerListener());
+        timer.start();
+    }
+
+    public void customStart(){
+        generateCustomCells();
         timer = new Timer(100,new timerListener());
         timer.start();
     }
@@ -132,6 +172,19 @@ public class MainPanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             nextCellState();
+        }
+    }
+
+    private class CellActionListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            JButton jb = (JButton) actionEvent.getSource();
+            if(jb.getBackground().equals(Color.black)){
+                jb.setBackground(getRandomColor());
+            }
+            else{
+                jb.setBackground(Color.black);
+            }
         }
     }
 }
