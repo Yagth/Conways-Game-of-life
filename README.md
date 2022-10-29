@@ -14,4 +14,4 @@ Java source codes and compiled bitecodes of the software can be found in this re
 
 
 **Note**
-This app was developed and tested on linux.
+This app was developed and tested on linux.  
